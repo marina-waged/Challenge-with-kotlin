@@ -36,7 +36,7 @@ class ItemsListAdapter (private var context : WeakReference<Context>, private va
         ImageLoader.load(context, itemObj.getPhotoUrl()!!, holder.itemIcon)
 
         holder.itemLayout.setOnClickListener {
-            listener.clickOnItem(itemObj)
+            listener.clickOnItem(itemObj, holder.itemIcon)
         }
     }
 

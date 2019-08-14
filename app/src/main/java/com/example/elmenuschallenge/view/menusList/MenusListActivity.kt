@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elmenuschallenge.ElMenusChallengeApplication
-import com.example.elmenuschallenge.R
 import com.example.elmenuschallenge.model.ItemData
 import com.example.elmenuschallenge.model.TagData
 import com.example.elmenuschallenge.view.menusDetails.DetailsActivity
@@ -21,6 +20,10 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.menus_list_activity.*
 import java.lang.ref.WeakReference
 import javax.inject.Inject
+import androidx.core.view.ViewCompat
+import androidx.core.app.ActivityOptionsCompat
+import android.widget.ImageView
+import com.example.elmenuschallenge.R
 
 
 class MenusListActivity : AppCompatActivity(), IMenusListController.View, TagsListener, ItemListener
@@ -119,13 +122,16 @@ class MenusListActivity : AppCompatActivity(), IMenusListController.View, TagsLi
     }
 
     //This method will be called when user select items and it will take his to details view
-    override fun clickOnItem(itemObject : ItemData)
+    override fun clickOnItem(itemObject : ItemData, imageView : ImageView)
     {
         val intent = Intent(this@MenusListActivity, DetailsActivity::class.java)
         intent.putExtra("itemName", itemObject.getName()!!)
         intent.putExtra("itemImageUrl", itemObject.getPhotoUrl())
         intent.putExtra("itemDescription", itemObject.getDescription())
-        startActivity(intent)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this@MenusListActivity, imageView, ViewCompat.getTransitionName(imageView)!!
+        )
+        startActivity(intent, options.toBundle())
     }
 
     override fun hideLoader()

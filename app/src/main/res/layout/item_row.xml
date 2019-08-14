@@ -14,7 +14,9 @@
             android:layout_gravity="center"
             android:layout_margin="5dp"
             android:contentDescription="@string/image_description"
-            android:src="@drawable/ic_profile_image"/>
+            android:src="@drawable/ic_profile_image"
+            android:scaleType="centerCrop"
+            android:transitionName="example_transition" />
 
     <TextView
             android:id="@+id/item_name"
