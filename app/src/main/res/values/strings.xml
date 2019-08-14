@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ElMenusChallenge</string>
+
+    <string name="loading">Please wait until Loading…</string>
+    <string name="image_description">Image Description</string>
+    <string name="no_data_found">No Data Found</string>
+</resources>
